@@ -83,6 +83,11 @@ func beforeBuild(ctx *cli.Context) error {
 		return err
 	}
 
+	err = validateSubstituteFlags(ctx.StringSlice("substitute"))
+	if err != nil {
+		return err
+	}
+
 	// Validate layer type
 	err = validateLayerTypeFlags(ctx)
 	if err != nil {
